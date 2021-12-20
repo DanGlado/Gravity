@@ -38,8 +38,8 @@ public class CoreFW extends AppCompatActivity{
         sceneWidth = FRAME_BUFFER_WIDTH / sizeDisplay.x;
         sceneHeight = FRAME_BUFFER_HEIGHT / sizeDisplay.y;
 
-        loopFW = new LoopFW(this.frameBuffer);
-        graphicsFW = new GraphicsFW(getAssets(), frameBuffer);
+        loopFW = new LoopFW(frameBuffer, this);
+        graphicsFW = new GraphicsFW(getAssets(), this.frameBuffer);
 
 
         sceneFW = getStartScene();

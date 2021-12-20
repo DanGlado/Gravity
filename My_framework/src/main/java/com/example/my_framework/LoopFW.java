@@ -23,7 +23,7 @@ public class LoopFW extends SurfaceView implements Runnable{
     Canvas canvas;
     Rect rect;
 
-    public LoopFW(CoreFW coreFW, Bitmap frameBuffer){
+    public LoopFW(Bitmap frameBuffer, CoreFW coreFW){
         super(coreFW);
         this.frameBuffer = frameBuffer;
         this.coreFW = coreFW;
@@ -77,7 +77,7 @@ public class LoopFW extends SurfaceView implements Runnable{
         drawing++;
         if (surfaceHolder.getSurface().isValid()){
             canvas = surfaceHolder.lockCanvas();
-            canvas.getClipBounds();
+            canvas.getClipBounds(rect);
             canvas.drawBitmap(frameBuffer, null, rect, null);
             coreFW.getCurrentScene().drawing();
             surfaceHolder.unlockCanvasAndPost(canvas);

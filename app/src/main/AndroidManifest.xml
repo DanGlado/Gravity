@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gravity">
         <activity
-            android:name=".MainActivity"
+            android:name=".Main"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>
