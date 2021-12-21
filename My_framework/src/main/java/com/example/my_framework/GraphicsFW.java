@@ -19,7 +19,7 @@ public class GraphicsFW {
     private Paint paintGame;
     private Bitmap textureGame;
 
-    public GraphicsFW(AssetManager assetManager, Bitmap frameBufferGame) {
+    public GraphicsFW(AssetManager assetManagerGame, Bitmap frameBufferGame) {
         this.assetManagerGame = assetManagerGame;
         this.frameBufferGame = frameBufferGame;
         this.canvasGame = new Canvas(frameBufferGame);
@@ -52,26 +52,29 @@ public class GraphicsFW {
         return frameBufferGame.getHeight();
     }
 
-    public Bitmap newTexture(String filename) {
+    public Bitmap newTexture(String fileName) {
         InputStream inputStream = null;
         try {
-            inputStream = assetManagerGame.open(filename);
+            inputStream=assetManagerGame.open(fileName);
             textureGame = BitmapFactory.decodeStream(inputStream);
-            if (textureGame == null) {
-                throw new RuntimeException("Невозможно загрузить файл " + filename);
+            if (textureGame==null){
+                throw new RuntimeException("Не возможно загрузить файл"+fileName);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Не возможно загрузить файл"+fileName);
         }
-        if (inputStream != null) {
+        if (inputStream!=null){
             try {
                 inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
         return textureGame;
     }
 
+    public Bitmap newSprite(Bitmap textureAtlas, int x, int y, int widthSprite, int heightSprite){
+        Bitmap newSprite=Bitmap.createBitmap(textureAtlas, x, y, widthSprite, heightSprite);
+        return newSprite;
+    }
 }

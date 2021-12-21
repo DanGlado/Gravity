@@ -3,6 +3,7 @@ package com.example.gravity.scenes;
 import android.graphics.Color;
 
 import com.example.gravity.R;
+import com.example.gravity.classes.GameManager;
 import com.example.gravity.generators.GeneratorBackground;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.SceneFW;
@@ -14,12 +15,16 @@ public class GameScene extends SceneFW {
     }
 
     GameState gameState;
-    GeneratorBackground generatorBackground;
+
+    GameManager gameManager;
+
     public GameScene(CoreFW coreFW) {
         super(coreFW);
         gameState = GameState.READY;
-        generatorBackground=new GeneratorBackground(sceneWidth, sceneHeight);
+
+        gameManager = new GameManager(coreFW,sceneWidth,sceneHeight);
     }
+
     @Override
     public void update() {
         if (gameState==GameState.READY){
@@ -77,11 +82,14 @@ public class GameScene extends SceneFW {
 
     private void drawingStateRunning() {
         graphicsFW.clearScene(Color.BLACK);
-        graphicsFW.drawText("Scene game", 250, 300, Color.WHITE, 60, null);
-        generatorBackground.drawing(graphicsFW);
+
+
+        gameManager.drawing(coreFW, graphicsFW);
     }
+
     private void updateStateRunning() {
-        generatorBackground.update();
+
+        gameManager.update();
     }
 
     private void drawingStateReady() {
