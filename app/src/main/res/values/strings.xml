@@ -1,8 +1,12 @@
 <resources>
+    <!--MainMenuScene-->
     <string name="app_name">Gravity</string>
     <string name="txt_mainMenu_nameGame">JetDan Joyride</string>
     <string name="txt_mainMenu_newGame">New game</string>
     <string name="txt_mainMenu_settings">Settings</string>
     <string name="txt_mainMenu_leaders">Leaders</string>
     <string name="txt_mainMenu_exitGame">Exit</string>
+
+    <!--GameScene-->
+    <string name="txt_gameScene_stateReady_ready">Ready?</string>
 </resources>
